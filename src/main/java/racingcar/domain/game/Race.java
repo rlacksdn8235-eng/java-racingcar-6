@@ -3,18 +3,19 @@ package racingcar.domain.game;
 import camp.nextstep.edu.missionutils.Console;
 import racingcar.domain.car.Car;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Race {
-    private Map<Car, Integer> carMap = new HashMap<>();
+    private List<Car> carList = new ArrayList<>();
 
     public void play() {
         // 자동차 입력
         inputCarName();
         // 몇번 시도 ?
+        System.out.println("시도할 회수는 몇회인가요?");
         // 시도횟수만큼 반복
-
+        startRace(Integer.parseInt(Console.readLine()));
 
         // 우승자 안내
     }
@@ -27,12 +28,11 @@ public class Race {
     private void createCar(String carNames) {
         String[] carArray = carNames.replace(" ", "").split(",");
         for (String carName : carArray) {
-            Car car = new Car(carName);
-            carMap.put(car, 0);
+            carList.add(new Car(carName));
         }
     }
 
-    private void playingGame(int count) {
+    private void startRace(int repeatCount) {
 
     }
 }
