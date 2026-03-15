@@ -16,8 +16,8 @@ public class Race {
         System.out.println("시도할 회수는 몇회인가요?");
         // 시도횟수만큼 반복
         startRace(Integer.parseInt(Console.readLine()));
-
         // 우승자 안내
+
     }
 
     private void inputCarName() {
@@ -33,8 +33,13 @@ public class Race {
     }
 
     private void startRace(int repeatCount) {
+        System.out.println("실행 결과");
         for (int i = 0 ; i < repeatCount ; i++) {
+            // 전진할지 말지 판단
             carList.forEach(Car::moveCar);
+            // 실행 결과를 출력
+            carList.forEach(Car::carInfo);
+            System.out.println();
         }
     }
 }
