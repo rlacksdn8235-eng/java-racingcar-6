@@ -33,6 +33,8 @@ public class Race {
     }
 
     private void startRace(int repeatCount) {
-
+        for (int i = 0 ; i < repeatCount ; i++) {
+            carList.forEach(Car::moveCar);
+        }
     }
 }
