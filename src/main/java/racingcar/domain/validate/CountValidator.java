@@ -16,9 +16,9 @@ public class CountValidator implements Validator {
     private boolean isNumber(String repeatCount) {
         try {
             Integer.parseInt(repeatCount);
-            return true;
-        } catch (IllegalArgumentException e) {
             return false;
+        } catch (IllegalArgumentException e) {
+            return true;
         }
     }
     private boolean isPositive(String repeatCount) {
