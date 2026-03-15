@@ -4,8 +4,13 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class Car {
     // 자동차 이름, 전진 횟수
-    public String carName;
-    public Integer moveCount;
+    private String name;
+    private Integer moveCount;
+
+    public Car(String carName) {
+        this.name = carName;
+        this.moveCount = 0;
+    }
 
     // 전진할지 말지 판단
     public void moveCar() {
@@ -17,12 +22,14 @@ public class Car {
 
     // 현재 상태를 출력
     public void carInfo() {
-        System.out.println(carName + " : " + "-".repeat(moveCount));
+        System.out.println(name + " : " + "-".repeat(moveCount));
     }
 
+    public String getName() {
+        return name;
+    }
 
-    public Car(String carName) {
-        this.carName = carName;
-        this.moveCount = 0;
+    public Integer getMoveCount() {
+        return moveCount;
     }
 }
