@@ -1,8 +1,9 @@
 package racingcar.domain.car;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.domain.cars.Cars;
+import racingcar.domain.factory.CarFactory;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -12,21 +13,22 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class CarsTest {
 
+    private CarFactory carFactory;
     private Cars cars;
 
     @BeforeEach
     void setUp() {
-        cars = new Cars();
+        carFactory = new CarFactory(cars);
     }
 
     @Test
     void createCar_CreatesMultipleCars() {
-        cars.createCar("pobi,woni,jun");
+        carFactory.createCar("pobi,woni,jun");
     }
 
     @Test
     void findWinners_SingleWinner() {
-        cars.createCar("pobi,woni");
+        carFactory.createCar("pobi,woni");
         
         assertRandomNumberInRangeTest(
                 () -> {
@@ -34,7 +36,7 @@ class CarsTest {
                     
                     ByteArrayOutputStream outContent = new ByteArrayOutputStream();
                     System.setOut(new PrintStream(outContent));
-                    
+
                     cars.findWinners();
                     
                     assertThat(outContent.toString()).contains("최종 우승자 : pobi");
@@ -46,7 +48,7 @@ class CarsTest {
 
     @Test
     void findWinners_MultipleWinners() {
-        cars.createCar("pobi,woni");
+        carFactory.createCar("pobi,woni");
 
         assertRandomNumberInRangeTest(
                 () -> {

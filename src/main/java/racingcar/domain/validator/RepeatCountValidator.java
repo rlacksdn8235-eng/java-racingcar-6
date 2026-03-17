@@ -1,6 +1,6 @@
-package racingcar.domain.validate;
+package racingcar.domain.validator;
 
-public class CountValidator implements Validator {
+public class RepeatCountValidator implements Validator {
     @Override
     public void validate(String repeatCount) {
         checkAllRules(repeatCount);

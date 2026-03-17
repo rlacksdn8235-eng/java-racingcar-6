@@ -5,24 +5,28 @@ import camp.nextstep.edu.missionutils.Randoms;
 public class Car {
     // 자동차 이름, 전진 횟수
     private String name;
-    private Integer moveCount;
+    private Integer position;
 
     public Car(String carName) {
         this.name = carName;
-        this.moveCount = 0;
+        this.position = 0;
     }
 
     // 전진할지 말지 판단
     public void moveCar() {
         int randomNumber = Randoms.pickNumberInRange(0, 9);
         if (randomNumber >= 4) {
-            moveCount++;
+            position++;
         }
     }
 
-    // 현재 상태를 출력
-    public void carInfo() {
-        System.out.println(name + " : " + "-".repeat(moveCount));
+    // 현재 상태
+    public String getInfo() {
+        return name + " : " + "-".repeat(position);
+    }
+
+    public boolean findCarBySamePosition(int maxPosition) {
+        return this.position == maxPosition;
     }
 
     public String getName() {
@@ -30,6 +34,6 @@ public class Car {
     }
 
     public Integer getMoveCount() {
-        return moveCount;
+        return position;
     }
 }

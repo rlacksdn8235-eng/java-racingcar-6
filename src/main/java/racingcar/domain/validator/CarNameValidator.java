@@ -1,8 +1,8 @@
-package racingcar.domain.validate;
+package racingcar.domain.validator;
 
 import java.util.Arrays;
 
-public class NameValidator implements Validator {
+public class CarNameValidator implements Validator {
     @Override
     public void validate(String carNames) {
         String[] carNameArray = carNames.replace(" ", "").split(",");
