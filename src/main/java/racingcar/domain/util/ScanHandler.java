@@ -14,9 +14,9 @@ public class ScanHandler {
 
     public String scanAndValidate() {
         // 입력해라
-        String repeatCount = scanner.scan();
+        String input = scanner.scan();
         // 검증해라
-        validator.validate(repeatCount);
-        return repeatCount;
+        validator.validate(input);
+        return input;
     }
 }
