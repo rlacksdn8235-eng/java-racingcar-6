@@ -8,16 +8,16 @@ import racingcar.domain.util.ScanHandler;
 public class Game {
     private final ScanHandler carNameScanHandler;
     private final ScanHandler repeatCountScanHandler;
-    private final WinnerPrinter winnerPrinter;
-    private final Race race;
     private final CarFactory carFactory;
+    private final Race race;
+    private final WinnerPrinter winnerPrinter;
 
-    public Game(ScanHandler carNameScanHandler, ScanHandler repeatCountScanHandler, WinnerPrinter winnerPrinter, Race race, CarFactory carFactory) {
+    public Game(ScanHandler carNameScanHandler, ScanHandler repeatCountScanHandler, CarFactory carFactory, Race race, WinnerPrinter winnerPrinter) {
         this.carNameScanHandler = carNameScanHandler;
         this.repeatCountScanHandler = repeatCountScanHandler;
-        this.winnerPrinter = winnerPrinter;
-        this.race = race;
         this.carFactory = carFactory;
+        this.race = race;
+        this.winnerPrinter = winnerPrinter;
     }
 
     // 게임을 진행시켜라

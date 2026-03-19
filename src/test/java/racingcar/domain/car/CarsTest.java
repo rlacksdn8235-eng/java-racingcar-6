@@ -18,6 +18,7 @@ class CarsTest {
 
     @BeforeEach
     void setUp() {
+        cars = new Cars();
         carFactory = new CarFactory(cars);
     }
 

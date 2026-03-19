@@ -29,9 +29,9 @@ public class Application {
                         new RepeatCountScanner(),
                         new RepeatCountValidator()
                 ),
-                new WinnerPrinter(cars), // 결과 출력
+                new CarFactory(cars), // 자동차 생성
                 new Race(cars, new ResultPrinter(cars)), // 레이스 관련
-                new CarFactory(cars) // 자동차 생성
+                new WinnerPrinter(cars) // 결과 출력
         );
         game.play();
     }
