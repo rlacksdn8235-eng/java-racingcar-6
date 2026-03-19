@@ -3,7 +3,7 @@ package racingcar.domain.car;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.cars.Cars;
-import racingcar.domain.factory.CarFactory;
+import racingcar.domain.util.CarFactory;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;

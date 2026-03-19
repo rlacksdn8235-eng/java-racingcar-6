@@ -4,14 +4,13 @@ import racingcar.domain.cars.Cars;
 
 import java.util.List;
 
-public class ResultPrinter implements Printer {
+public class ResultPrinter {
     private final Cars cars;
 
     public ResultPrinter(Cars cars) {
         this.cars = cars;
     }
 
-    @Override
     public void print() {
         System.out.println("실행 결과");
         List<String> result = cars.getInfos();

@@ -1,37 +1,37 @@
 package racingcar.domain.game;
 
-import racingcar.domain.printer.Printer;
+import racingcar.domain.util.CarFactory;
+import racingcar.domain.printer.WinnerPrinter;
 import racingcar.domain.race.Race;
-import racingcar.domain.scanner.RepeatCountScanner;
-import racingcar.domain.scanner.Scanner;
-import racingcar.domain.validator.Validator;
+import racingcar.domain.util.ScanHandler;
 
 public class Game {
-    // 게임을 진행시키기 위해 필요한 상태
-    private Scanner scanner; // CarName이나 RepeatCount나 변경 가능성 있음
-    private final Printer printer; // WinnerPrinter
-    private final Validator validator;
+    private final ScanHandler carNameScanHandler;
+    private final ScanHandler repeatCountScanHandler;
+    private final WinnerPrinter winnerPrinter;
     private final Race race;
+    private final CarFactory carFactory;
 
-    public Game(Scanner scanner, Printer printer, Validator validator, Race race) {
-        this.scanner = scanner;
-        this.printer = printer;
-        this.validator = validator;
+    public Game(ScanHandler carNameScanHandler, ScanHandler repeatCountScanHandler, WinnerPrinter winnerPrinter, Race race, CarFactory carFactory) {
+        this.carNameScanHandler = carNameScanHandler;
+        this.repeatCountScanHandler = repeatCountScanHandler;
+        this.winnerPrinter = winnerPrinter;
         this.race = race;
+        this.carFactory = carFactory;
     }
 
     // 게임을 진행시켜라
     public void play() {
         // 자동차 이름 입력해라
-        scanner.scan();
-        // 레이싱 몇번할지 입력해라
-        changeScanner(new RepeatCountScanner(validator, race));
-        scanner.scan();
+        String carNames = carNameScanHandler.scanAndValidate();
+        // 자동차 생성해라
+        carFactory.createCar(carNames);
+        // 반복 횟수 입력받아라
+        String repeatCount = repeatCountScanHandler.scanAndValidate();
+        // 레이싱 반복시켜라
+        race.repeatRacing(Integer.parseInt(repeatCount));
         // 우승자를 출력해라
-        printer.print();
+        winnerPrinter.print();
     }
 
-    private void changeScanner(Scanner scanner) {
-        this.scanner = scanner;
-    }
 }
